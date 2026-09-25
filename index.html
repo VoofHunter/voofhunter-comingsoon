@@ -7,223 +7,271 @@
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
     }
 
     body {
-      min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
+      color: #2d2118;
+      background: #f4ede4;
+    }
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
       background:
-        radial-gradient(circle at top right, rgba(205, 174, 132, 0.20), transparent 35%),
-        linear-gradient(135deg, #f7f1e8, #efe4d4);
-      color: #2f241b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 32px;
+        linear-gradient(
+          90deg,
+          rgba(247, 241, 233, 0.98) 0%,
+          rgba(247, 241, 233, 0.95) 34%,
+          rgba(247, 241, 233, 0.68) 51%,
+          rgba(247, 241, 233, 0.10) 72%,
+          rgba(247, 241, 233, 0.00) 100%
+        ),
+        url("voofhunter-hero.png") center right / cover no-repeat;
     }
 
-    .page {
-      width: 100%;
-      max-width: 1180px;
-      min-height: 680px;
-      background: rgba(255, 252, 247, 0.78);
-      border: 1px solid rgba(80, 58, 40, 0.10);
-      border-radius: 28px;
-      padding: 42px 56px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 30px 80px rgba(67, 48, 31, 0.08);
-    }
-
-    header {
+    .nav {
+      position: relative;
+      z-index: 2;
+      height: 94px;
+      padding: 0 6.8vw;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      border-bottom: 1px solid rgba(79, 57, 39, 0.12);
     }
 
     .brand {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 32px;
-      letter-spacing: -0.5px;
+      font-size: clamp(28px, 2.5vw, 42px);
+      font-weight: 400;
     }
 
-    .top-note {
+    .nav-note {
       font-size: 11px;
+      line-height: 1.7;
       letter-spacing: 3px;
       text-transform: uppercase;
-      opacity: 0.65;
       text-align: right;
-      line-height: 1.7;
+      color: rgba(45, 33, 24, 0.72);
     }
 
-    main {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 70px;
-      align-items: center;
-      padding: 70px 0;
+    .content {
+      position: relative;
+      z-index: 2;
+      min-height: calc(100vh - 94px);
+      padding: 9vh 6.8vw 7vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .copy {
+      width: min(680px, 53vw);
     }
 
     .eyebrow {
-      font-size: 12px;
-      letter-spacing: 3px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 30px;
+      font-size: 11px;
+      letter-spacing: 3.4px;
       text-transform: uppercase;
-      opacity: 0.55;
-      margin-bottom: 22px;
+      color: #a88e77;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 62px;
+      height: 1px;
+      background: #9d836d;
     }
 
     h1 {
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 400;
-      font-size: clamp(58px, 7vw, 100px);
-      line-height: 0.96;
-      letter-spacing: -3px;
-      margin-bottom: 28px;
+      font-size: clamp(62px, 6.8vw, 112px);
+      line-height: 0.92;
+      letter-spacing: -4px;
+      margin-bottom: 26px;
     }
 
     .subtitle {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 24px;
-      line-height: 1.5;
-      color: #6d5847;
+      font-size: clamp(20px, 1.75vw, 30px);
+      line-height: 1.45;
+      color: #6f5b4b;
       max-width: 650px;
     }
 
-    .status {
-      margin-top: 34px;
+    .coming-soon {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      font-size: 13px;
-      letter-spacing: 2px;
+      gap: 14px;
+      margin-top: 34px;
+      font-size: clamp(20px, 2vw, 30px);
+      font-weight: 700;
+      letter-spacing: 5px;
       text-transform: uppercase;
-      color: #6b533f;
+      color: #5d402a;
     }
 
-    .dot {
-      width: 8px;
-      height: 8px;
+    .coming-soon::before {
+      content: "";
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      background: #8f6d4f;
+      background: #8e6848;
+      box-shadow: 0 0 0 8px rgba(142, 104, 72, 0.10);
     }
 
-    .visual {
-      min-height: 380px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .circle {
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
-      background: linear-gradient(145deg, #dfccb5, #f4e9dc);
+    .side-note {
       position: absolute;
-      box-shadow: inset 0 0 80px rgba(255,255,255,0.35);
-    }
-
-    .cat {
-      position: relative;
       z-index: 2;
-      font-size: 170px;
-      filter: drop-shadow(0 18px 24px rgba(59, 39, 22, 0.16));
-    }
-
-    .ring {
-      position: absolute;
-      width: 460px;
-      height: 460px;
-      border: 1px solid rgba(80, 58, 40, 0.18);
-      border-radius: 50%;
-    }
-
-    footer {
-      border-top: 1px solid rgba(80, 58, 40, 0.12);
-      padding-top: 24px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      font-size: 12px;
-      letter-spacing: 2px;
+      right: 6.5vw;
+      top: 41%;
+      font-size: 11px;
+      line-height: 2.1;
+      letter-spacing: 3.3px;
       text-transform: uppercase;
-      color: #816b59;
+      color: rgba(64, 47, 34, 0.74);
     }
 
-    @media (max-width: 850px) {
-      .page {
-        padding: 28px;
-        min-height: auto;
+    .side-note::after {
+      content: "";
+      display: block;
+      width: 62px;
+      height: 1px;
+      background: rgba(85, 62, 43, 0.45);
+      margin-top: 18px;
+    }
+
+    .footer-note {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+      font-size: 11px;
+      letter-spacing: 2.8px;
+      line-height: 1.7;
+      text-transform: uppercase;
+      color: rgba(64, 47, 34, 0.72);
+    }
+
+    .footer-note .left::before {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 1px;
+      margin-bottom: 14px;
+      background: rgba(85, 62, 43, 0.45);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(247, 241, 233, 0.98) 0%,
+            rgba(247, 241, 233, 0.96) 40%,
+            rgba(247, 241, 233, 0.60) 61%,
+            rgba(247, 241, 233, 0.12) 80%
+          ),
+          url("voofhunter-hero.png") 68% center / cover no-repeat;
       }
 
-      header {
-        align-items: flex-start;
+      .nav {
+        height: 76px;
+        padding: 0 24px;
       }
 
-      .top-note {
+      .nav-note,
+      .side-note {
         display: none;
       }
 
-      main {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        padding: 60px 0 40px;
+      .content {
+        min-height: calc(100vh - 76px);
+        padding: 54px 24px 28px;
+      }
+
+      .copy {
+        width: 100%;
+        max-width: 620px;
       }
 
       h1 {
-        font-size: 58px;
-        letter-spacing: -2px;
+        font-size: clamp(52px, 14vw, 80px);
+        line-height: 0.95;
+        letter-spacing: -2.5px;
       }
 
       .subtitle {
         font-size: 20px;
+        max-width: 520px;
       }
 
-      .visual {
-        min-height: 290px;
+      .coming-soon {
+        font-size: 18px;
+        letter-spacing: 4px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(247, 241, 233, 1) 0%,
+            rgba(247, 241, 233, 0.98) 44%,
+            rgba(247, 241, 233, 0.68) 66%,
+            rgba(247, 241, 233, 0.14) 88%
+          ),
+          url("voofhunter-hero.png") 70% center / cover no-repeat;
       }
 
-      .circle {
-        width: 260px;
-        height: 260px;
+      h1 {
+        font-size: 54px;
       }
 
-      .ring {
-        width: 320px;
-        height: 320px;
+      .subtitle {
+        font-size: 18px;
       }
 
-      .cat {
-        font-size: 125px;
-      }
-
-      footer {
+      .footer-note {
         flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
 
 <body>
-  <section class="page">
-    <header>
+  <main class="hero">
+
+    <header class="nav">
       <div class="brand">Voof Hunter</div>
 
-      <div class="top-note">
-        Premium Pet Food & Lifestyle<br />
-        Coming Soon
+      <div class="nav-note">
+        Natural Nutrition<br />
+        For a Wilder Life
       </div>
     </header>
 
-    <main>
-      <div class="content">
-        <div class="eyebrow">A new journey is coming</div>
+    <section class="content">
+
+      <div class="copy">
+        <div class="eyebrow">Pets Live Braver Lives</div>
 
         <h1>
           Born to Hunt.<br />
@@ -231,27 +279,33 @@
         </h1>
 
         <p class="subtitle">
-          A premium pet food and lifestyle brand created for pets
-          who deserve more from every day.
+          Premium pet food & lifestyle, coming soon.
         </p>
 
-        <div class="status">
-          <span class="dot"></span>
+        <div class="coming-soon">
           Coming Soon
         </div>
       </div>
 
-      <div class="visual">
-        <div class="ring"></div>
-        <div class="circle"></div>
-        <div class="cat">🐈</div>
-      </div>
-    </main>
+      <div class="footer-note">
+        <div class="left">
+          Good Food<br />
+          Brings a Brighter Tomorrow.
+        </div>
 
-    <footer>
-      <div>voofhunter.com</div>
-      <div>Good Food. Brighter Lives.</div>
-    </footer>
-  </section>
+        <div>
+          voofhunter.com
+        </div>
+      </div>
+
+    </section>
+
+    <div class="side-note">
+      Natural<br />
+      Balanced<br />
+      Braver Lives
+    </div>
+
+  </main>
 </body>
 </html>
