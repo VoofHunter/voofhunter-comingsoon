@@ -128,11 +128,24 @@
 
     .coming-soon::before {
       content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #8e6848;
-      box-shadow: 0 0 0 8px rgba(142, 104, 72, 0.10);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #8e6848;
+  box-shadow: 0 0 0 0 rgba(142, 104, 72, 0.22);
+  animation: pulseDot 2.2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(142, 104, 72, 0.22);
+  }
+
+  50% {
+    transform: scale(1.18);
+    box-shadow: 0 0 0 10px rgba(142, 104, 72, 0);
+  }
     }
 
     .side-note {
