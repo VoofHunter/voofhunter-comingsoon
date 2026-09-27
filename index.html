@@ -227,32 +227,62 @@
       }
     }
 
-    @media (max-width: 520px) {
-      .hero {
-        background:
-          linear-gradient(
-            180deg,
-            rgba(247, 241, 233, 1) 0%,
-            rgba(247, 241, 233, 0.98) 44%,
-            rgba(247, 241, 233, 0.68) 66%,
-            rgba(247, 241, 233, 0.14) 88%
-          ),
-          url("voofhunter-hero.png") 70% center / cover no-repeat;
-      }
+@media (max-width: 520px) {
+  .hero {
+    min-height: 100svh;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(247, 241, 233, 0.96) 0%,
+        rgba(247, 241, 233, 0.88) 34%,
+        rgba(247, 241, 233, 0.45) 60%,
+        rgba(247, 241, 233, 0.08) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(247, 241, 233, 0.95) 0%,
+        rgba(247, 241, 233, 0.88) 42%,
+        rgba(247, 241, 233, 0.38) 64%,
+        rgba(247, 241, 233, 0.00) 84%
+      ),
+      url("voofhunter-hero.png") 82% center / cover no-repeat;
+  }
 
-      h1 {
-        font-size: 54px;
-      }
+  .content {
+    min-height: calc(100svh - 76px);
+    padding: 42px 22px 24px;
+  }
 
-      .subtitle {
-        font-size: 18px;
-      }
+  .copy {
+    width: 62%;
+    max-width: none;
+  }
 
-      .footer-note {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
+  h1 {
+    font-size: 52px;
+    line-height: 0.96;
+    letter-spacing: -2px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    line-height: 1.35;
+    max-width: 260px;
+  }
+
+  .coming-soon {
+    font-size: 17px;
+    letter-spacing: 3px;
+  }
+
+  .footer-note {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 8px;
+    letter-spacing: 1.8px;
+  }
+}
   </style>
 </head>
 
